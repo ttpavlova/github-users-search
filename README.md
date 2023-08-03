@@ -1,46 +1,47 @@
-# Getting Started with Create React App
+# Тестовое задание на позицию Junior Web-разработчика
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Задача
 
-## Available Scripts
+Необходимо реализовать интерфейс поиска пользователей.
+Данные по пользователям берем с `https://api.github.com/search/users?q={имя пользователя}` (документация https://developer.github.com/v3/search/#search-users)
 
-In the project directory, you can run:
+Требования:
+- Поиск: по логину.
+- Сортировка: по кол-ву репозиториев (возрастанию/убыванию)
+- Использовать React.
+- Пагинация.
+- При клике на элемент - открываются подробности (как и какие на усмотрение разработчика).
+- Реализовать 3 юнит-теста на функционал.
 
-### `npm start`
+## Результат
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Проект доступен по ссылке:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Скриншоты представлены ниже:
 
-### `npm test`
+![empty list](/showcase/img/empty_list.png)
+<p align="center">Сообщение о том, что по запросу ничего не найдено</p>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![list of users](/showcase/img/list_of_users.png)
+<p align="center">Список пользователей</p>
 
-### `npm run build`
+В качестве UI фреймворка использован Ant Design.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Запуск
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Загрузите этот репозиторий:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+$ git clone https://github.com/ttpavlova/github-users-search.git
+```
 
-### `npm run eject`
+Установите все зависимости из файла `package.json`:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+`npm install`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+В директории проекта введите следующую команду:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`npm start`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Приложение запустится в режиме разработки.
+Откройте [http://localhost:3000](http://localhost:3000) для его просмотра в браузере.

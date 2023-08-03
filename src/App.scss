@@ -1,0 +1,44 @@
+@use "styles/reset";
+@use "styles/variables";
+
+.layout {
+    background-color: #fff;
+}
+
+.header {
+    height: 65px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.logo {
+    font-weight: 500;
+}
+
+.content {
+    min-height: calc(100vh - 65px - 70px);
+    padding: 20px 50px;
+}
+
+.hidden {
+    display: none;
+}
+
+.footer {
+    height: 70px;
+}
+
+.login {
+    width: fit-content;
+}
+
+.login:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 992px) {
+    .content {
+        padding: 20px 30px;
+    }
+}

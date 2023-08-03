@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import { useDebounce } from "../../hooks/useDebounce";
 import { Users } from "../../types/types";
+import { Input } from "antd";
 
 interface SearchBarProps {
     setUsers: React.Dispatch<React.SetStateAction<Users>>;
     page: number;
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const SearchBar = ({ setUsers, page }: SearchBarProps) => {
+export const SearchBar = ({ setUsers, page, setLoading }: SearchBarProps) => {
     const [query, setQuery] = useState("");
-    const [loading, setLoading] = useState(false);
     const [order, setOrder] = useState("desc");
     const perPage = 10;
 
@@ -68,13 +69,13 @@ export const SearchBar = ({ setUsers, page }: SearchBarProps) => {
             <button onClick={() => changeOrder()}>{order}</button>
 
             <form onSubmit={handleSubmit}>
-                <input
+                <Input
                     type="text"
                     value={query}
                     onChange={handleChange}
                     placeholder="User login"
                     required
-                ></input>
+                ></Input>
             </form>
         </>
     );

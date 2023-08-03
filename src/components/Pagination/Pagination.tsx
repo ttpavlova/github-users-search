@@ -12,6 +12,7 @@ export const Pagination = ({ total_count, handleChange }: PaginationProps) => {
     return (
         <Space style={{ display: "flex", justifyContent: "center" }}>
             <PaginationComponent
+                data-testid="pagination"
                 defaultCurrent={1}
                 defaultPageSize={10}
                 total={totalCount}

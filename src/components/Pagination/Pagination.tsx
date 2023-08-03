@@ -1,13 +1,13 @@
 import { Pagination as PaginationComponent, Space } from "antd";
 
 interface PaginationProps {
-    total_count: number;
+    totalCount: number;
     handleChange: (page: number) => void;
 }
-export const Pagination = ({ total_count, handleChange }: PaginationProps) => {
-    const totalCount = total_count > 1000 ? 1000 : total_count;
+export const Pagination = ({ totalCount, handleChange }: PaginationProps) => {
+    const totalUsers = totalCount > 1000 ? 1000 : totalCount;
 
-    if (totalCount <= 10) return null;
+    if (totalUsers <= 10) return null;
 
     return (
         <Space style={{ display: "flex", justifyContent: "center" }}>
@@ -15,7 +15,7 @@ export const Pagination = ({ total_count, handleChange }: PaginationProps) => {
                 data-testid="pagination"
                 defaultCurrent={1}
                 defaultPageSize={10}
-                total={totalCount}
+                total={totalUsers}
                 showSizeChanger={false}
                 onChange={handleChange}
             />

@@ -48,7 +48,7 @@ export const SearchPage = () => {
                     />
                     <Pagination
                         handleChange={changePage}
-                        total_count={users.total_count}
+                        totalCount={users.total_count}
                     />
                 </Space>
             </Col>

@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Users } from "./types/types";
 import { SearchBar } from "./components/SearchBar/SearchBar";
 import { UserList } from "./components/UserList/UserList";
+import { useUsers } from "./hooks/useUsers";
+import { useDebounce } from "./hooks/useDebounce";
 import { usePagination } from "./hooks/usePagination";
 import { Pagination } from "./components/Pagination/Pagination";
 import { Col, Layout, Row, Space } from "antd";
@@ -9,11 +10,18 @@ import { Content, Footer, Header } from "antd/es/layout/layout";
 import "./App.scss";
 
 function App() {
-    const [users, setUsers] = useState<Users>({ total_count: 0, items: [] });
+    const [query, setQuery] = useState("");
     const [order, setOrder] = useState("desc");
     const [loading, setLoading] = useState(false);
 
     const { page, changePage } = usePagination();
+    const debouncedQuery = useDebounce(query, 1000);
+    const { users } = useUsers(debouncedQuery, order, page, setLoading);
+
+    const changeQuery = (e: React.FormEvent<HTMLInputElement>) => {
+        setQuery(e.currentTarget.value);
+        setLoading(true);
+    };
 
     const changeOrder = (value: string) => {
         setOrder(value);
@@ -37,11 +45,9 @@ function App() {
                                 }}
                             >
                                 <SearchBar
-                                    setUsers={setUsers}
-                                    page={page}
-                                    order={order}
+                                    query={query}
+                                    handleChange={changeQuery}
                                     loading={loading}
-                                    setLoading={setLoading}
                                 />
                                 <UserList
                                     users={users}
@@ -49,7 +55,6 @@ function App() {
                                     loading={loading}
                                 />
                                 <Pagination
-                                    page={page}
                                     handleChange={changePage}
                                     total_count={users.total_count}
                                 />

@@ -1,7 +1,6 @@
 import { Pagination as PaginationComponent, Space } from "antd";
 
 interface PaginationProps {
-    page: number;
     total_count: number;
     handleChange: (page: number) => void;
 }

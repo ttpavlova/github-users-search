@@ -55,9 +55,14 @@ export const User = ({
                 footer={null}
             >
                 <Avatar size={64} src={avatar_url} />
-                <p>Some contents...</p>
-                <p>Some contents...</p>
-                <p>Some contents...</p>
+                <div className="user-info">
+                    <p>id: {id}</p>
+                    <p>
+                        <a href={html_url} target="_blank" rel="noreferrer">
+                            github page
+                        </a>
+                    </p>
+                </div>
             </Modal>
         </>
     );

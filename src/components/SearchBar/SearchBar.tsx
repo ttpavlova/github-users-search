@@ -4,14 +4,16 @@ import { Users } from "../../types/types";
 
 interface SearchBarProps {
     setUsers: React.Dispatch<React.SetStateAction<Users>>;
+    page: number;
 }
 
-export const SearchBar = ({ setUsers }: SearchBarProps) => {
+export const SearchBar = ({ setUsers, page }: SearchBarProps) => {
     const [query, setQuery] = useState("");
     const [loading, setLoading] = useState(false);
     const [order, setOrder] = useState("desc");
+    const perPage = 10;
 
-    const debouncedQuery = useDebounce(query, 1500);
+    const debouncedQuery = useDebounce(query, 1000);
 
     useEffect(() => {
         const getUsers = async (query: string) => {
@@ -22,7 +24,11 @@ export const SearchBar = ({ setUsers }: SearchBarProps) => {
                 const queryString =
                     "q=" + encodeURIComponent(query + " in:login");
                 const response = await fetch(
-                    `https://api.github.com/search/users?${queryString}&sort=repositories&order=${order}&page=${1}`,
+                    `https://api.github.com/search/users?${queryString}` +
+                        `&sort=repositories` +
+                        `&order=${order}` +
+                        `&per_page=${perPage}` +
+                        `&page=${page}`,
 
                     {
                         headers: {
@@ -39,7 +45,7 @@ export const SearchBar = ({ setUsers }: SearchBarProps) => {
         };
 
         getUsers(debouncedQuery);
-    }, [debouncedQuery, order]);
+    }, [debouncedQuery, order, page]);
 
     const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
         setQuery(e.currentTarget.value);

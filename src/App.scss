@@ -6,9 +6,13 @@
 }
 
 .header {
-    height: 65px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: variables.$header;
     background-color: #fff;
     text-align: center;
+    font-size: 12px;
 }
 
 .logo {
@@ -16,7 +20,7 @@
 }
 
 .content {
-    min-height: calc(100vh - 65px - 70px);
+    min-height: calc(100vh - variables.$header - variables.$footer);
     padding: 20px 50px;
 }
 
@@ -25,7 +29,7 @@
 }
 
 .footer {
-    height: 70px;
+    height: variables.$footer;
 }
 
 .login {

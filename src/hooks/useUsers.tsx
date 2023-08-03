@@ -48,7 +48,7 @@ export const useUsers = (
         };
 
         getUsers(query);
-    }, [query, order, page]);
+    }, [query, order, page, setLoading]);
 
     return { users };
 };

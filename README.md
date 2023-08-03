@@ -15,7 +15,7 @@
 
 ## Результат
 
-Проект доступен по ссылке: <a href="https://users-search-test-task.netlify.app/" target="_blank">https://users-search-test-task.netlify.app/</a>
+Проект доступен по ссылке: https://users-search-test-task.netlify.app/
 
 Скриншоты представлены ниже:
 

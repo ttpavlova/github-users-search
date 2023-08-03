@@ -17,6 +17,7 @@ export const SearchBar = ({ query, handleChange, loading }: SearchBarProps) => {
     return (
         <form onSubmit={handleSubmit}>
             <Input
+                data-testid="input"
                 type="text"
                 value={query}
                 onChange={handleChange}

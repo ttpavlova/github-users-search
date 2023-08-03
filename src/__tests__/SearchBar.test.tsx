@@ -25,7 +25,7 @@ describe("SearchBar component", () => {
         const inputElem = screen.getByTestId("input");
 
         fireEvent.change(inputElem, {
-            target: { value: "Alex" },
+            target: { value: "login1" },
         });
 
         expect(handleChange).toHaveBeenCalledTimes(1);
@@ -48,7 +48,7 @@ describe("SearchBar component", () => {
         const inputElem = screen.getByTestId("input");
 
         fireEvent.change(inputElem, {
-            target: { value: "Alex" },
+            target: { value: "login1" },
         });
 
         rerender(
@@ -59,6 +59,6 @@ describe("SearchBar component", () => {
             />
         );
 
-        expect(inputElem).toHaveValue("Alex");
+        expect(inputElem).toHaveValue("login1");
     });
 });

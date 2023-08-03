@@ -5,7 +5,8 @@ export const useUsers = (
     query: string,
     order: string,
     page: number,
-    setLoading: React.Dispatch<React.SetStateAction<boolean>>
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>,
+    setError: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
     const [users, setUsers] = useState<Users>({ total_count: 0, items: [] });
     const perPage = 10;
@@ -34,11 +35,12 @@ export const useUsers = (
                         const users = await response.json();
 
                         setUsers(users);
+                        setError(false);
                     } else {
-                        throw new Error(response.statusText);
+                        throw new Error("Failed to fetch");
                     }
-                } catch {
-                    throw new Error("Failed to fetch");
+                } catch (e) {
+                    setError(true);
                 }
             } else {
                 setUsers({ total_count: 0, items: [] });
@@ -48,7 +50,7 @@ export const useUsers = (
         };
 
         getUsers(query);
-    }, [query, order, page, setLoading]);
+    }, [query, order, page, setLoading, setError]);
 
     return { users };
 };

@@ -1,7 +1,8 @@
 import { SearchPage } from "./components/SearchPage/SearchPage";
 import { Layout } from "antd";
-import { Content, Footer, Header } from "antd/es/layout/layout";
 import "./App.scss";
+
+const { Header, Footer, Content } = Layout;
 
 function App() {
     return (

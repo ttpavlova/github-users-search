@@ -1,4 +1,4 @@
-import { Avatar, List, Modal, Skeleton } from "antd";
+import { Avatar, List, Modal } from "antd";
 import { useState } from "react";
 
 interface UserProps {
@@ -29,23 +29,14 @@ export const User = ({
     return (
         <>
             <List.Item>
-                <Skeleton
-                    avatar
-                    title={false}
-                    paragraph={{ rows: 1 }}
-                    loading={loading}
-                    active
-                >
-                    <List.Item.Meta
-                        avatar={<Avatar src={avatar_url} />}
-                        title={
-                            <p className="login" onClick={showModal}>
-                                {login}
-                            </p>
-                        }
-                        style={{ height: "48px" }}
-                    />
-                </Skeleton>
+                <List.Item.Meta
+                    avatar={<Avatar src={avatar_url} />}
+                    title={
+                        <p className="login" onClick={showModal}>
+                            {login}
+                        </p>
+                    }
+                />
             </List.Item>
 
             <Modal

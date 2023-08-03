@@ -40,6 +40,7 @@ function App() {
                                     setUsers={setUsers}
                                     page={page}
                                     order={order}
+                                    loading={loading}
                                     setLoading={setLoading}
                                 />
                                 <UserList

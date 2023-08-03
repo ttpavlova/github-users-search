@@ -38,7 +38,7 @@ export const UserList = ({ users, handleChange, loading }: UsersProps) => {
                 itemLayout="horizontal"
                 dataSource={users.items}
                 locale={{
-                    emptyText: "Your search did not match any users",
+                    emptyText: "Your search does not match any users",
                 }}
                 renderItem={(user) => (
                     <User

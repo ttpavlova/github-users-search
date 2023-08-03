@@ -6,12 +6,17 @@ import { Input } from "antd";
 interface SearchBarProps {
     setUsers: React.Dispatch<React.SetStateAction<Users>>;
     page: number;
+    order: string;
     setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const SearchBar = ({ setUsers, page, setLoading }: SearchBarProps) => {
+export const SearchBar = ({
+    setUsers,
+    page,
+    order,
+    setLoading,
+}: SearchBarProps) => {
     const [query, setQuery] = useState("");
-    const [order, setOrder] = useState("desc");
     const perPage = 10;
 
     const debouncedQuery = useDebounce(query, 1000);
@@ -52,31 +57,19 @@ export const SearchBar = ({ setUsers, page, setLoading }: SearchBarProps) => {
         setQuery(e.currentTarget.value);
     };
 
-    const changeOrder = () => {
-        if (order === "desc") {
-            setOrder("asc");
-        } else {
-            setOrder("desc");
-        }
-    };
-
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
     }
 
     return (
-        <>
-            <button onClick={() => changeOrder()}>{order}</button>
-
-            <form onSubmit={handleSubmit}>
-                <Input
-                    type="text"
-                    value={query}
-                    onChange={handleChange}
-                    placeholder="User login"
-                    required
-                ></Input>
-            </form>
-        </>
+        <form onSubmit={handleSubmit}>
+            <Input
+                type="text"
+                value={query}
+                onChange={handleChange}
+                placeholder="User login"
+                required
+            ></Input>
+        </form>
     );
 };

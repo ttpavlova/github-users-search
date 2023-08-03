@@ -10,9 +10,14 @@ import "./App.scss";
 
 function App() {
     const [users, setUsers] = useState<Users>({ total_count: 0, items: [] });
+    const [order, setOrder] = useState("desc");
     const [loading, setLoading] = useState(false);
 
     const { page, changePage } = usePagination();
+
+    const changeOrder = (value: string) => {
+        setOrder(value);
+    };
 
     return (
         <div className="App">
@@ -34,12 +39,17 @@ function App() {
                                 <SearchBar
                                     setUsers={setUsers}
                                     page={page}
+                                    order={order}
                                     setLoading={setLoading}
                                 />
-                                <UserList users={users} loading={loading} />
+                                <UserList
+                                    users={users}
+                                    handleChange={changeOrder}
+                                    loading={loading}
+                                />
                                 <Pagination
                                     page={page}
-                                    changePage={changePage}
+                                    handleChange={changePage}
                                     total_count={users.total_count}
                                 />
                             </Space>

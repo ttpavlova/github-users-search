@@ -3,9 +3,9 @@ import { Pagination as PaginationComponent, Space } from "antd";
 interface PaginationProps {
     page: number;
     total_count: number;
-    changePage: (page: number) => void;
+    handleChange: (page: number) => void;
 }
-export const Pagination = ({ total_count, changePage }: PaginationProps) => {
+export const Pagination = ({ total_count, handleChange }: PaginationProps) => {
     const totalCount = total_count > 1000 ? 1000 : total_count;
 
     if (totalCount === 0) return null;
@@ -17,7 +17,7 @@ export const Pagination = ({ total_count, changePage }: PaginationProps) => {
                 defaultPageSize={10}
                 total={totalCount}
                 showSizeChanger={false}
-                onChange={changePage}
+                onChange={handleChange}
             />
         </Space>
     );
